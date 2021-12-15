@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Handling</title>
+   <style>
+    
+
+    .container {
+
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: azure;
+        flex-direction: column;
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 30px;
+           
+       }
+
+       input[type=text] {
+        background-color: #4CAF50;
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+        padding: 16px 32px;
+        box-shadow:0px 0px 3px 2px gray;
+        border-radius: 50px;
+        margin: 4px 200px;
+        width:40vw;
+       }
+
+       button {
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        padding: 16px 0px;
+        margin: 4px 2px;
+        text-shadow: 0 0.3px 0 rgb(255, 255, 255);
+        font: inherit;
+        background: #2193b0;  
+        background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  
+        background: linear-gradient(to right, #6dd5ed, #2193b0);
+        width: 22vw;
+        transition: 0.5s;
+
+       }
+       button:hover {
+
+
+        background: #0F2027;  
+        background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);  
+        background: linear-gradient(to top, #2C5364, #203A43, #0F2027); 
+        box-shadow:0px 0px 3px 2px gray;
+        color: white;
+        font-size: larger;
+        width:25vw;
+        transition: 0.5s;
+
+       }
+
+   </style>
+    <script>
+      
+        function countLs() {
+           
+           cpt = 0
+           normal_text =  document.getElementById("txt").value.toString()
+           txt = document.getElementById("txt").value.toLowerCase()
+          
+           for(i=0;i<txt.length;i++)
+           {
+               if("l" === txt[i]) cpt++
+           }
+           toDisplay(normal_text," has "+ cpt + " L(s)",txt)
+ 
+        }
+
+        function countVowels() {
+           cpt = 0
+           vowels = ["a","e","i","o","u","y","å","ä","ö"]
+           normal_text =  document.getElementById("txt").value.toString()
+           txt = document.getElementById("txt").value.toLowerCase()
+           for(i=0;i<txt.length;i++)
+           {
+               vowels.map(function(item) {
+                if(txt[i] == item) cpt++
+               })
+               
+           }
+           toDisplay(normal_text," has "+ cpt + " Vowel(s)",txt)
+ 
+        }
+
+        function isPalindrome() {
+           result = "not a Palindrome"
+           normal_text =  document.getElementById("txt").value.toString()
+           txt = document.getElementById("txt").value.toLowerCase()
+  
+           for(i=0,j=txt.length-1;i<j + 1;i++,j--)
+           {
+               if (txt[i] === txt[j]) 
+                {
+                    result= "Palindrome"
+                }
+               else 
+               {
+                   result= "not a Palindrome"
+                   break
+                }
+
+           }
+           toDisplay(normal_text,`is ${result}`,txt)
+        }
+
+        function toDisplay(normal_text,msg,txt) {
+            if(!(txt === ""))  display.innerHTML = `<span style='color:#f5d442'>${normal_text} </span>${msg}` 
+            else display.innerHTML = "<div style='color:red'>Please Type Something and then Check</div>"
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+     <h1> String handling</h1>
+     <br>
+        <input type="text" id="txt" placeholder="Type something ..."><br>
+        <button onclick="countLs()" >Count how many L's</button>
+        <button onclick="countVowels()">Count how many Vowels</button>
+        <button onclick="isPalindrome()">Check whether is it a Palindrome</button>
+        <br>
+        <span id="display"></span>   
+    </div>
+
+</body>
+</html>
